@@ -2,9 +2,9 @@
   "name": "INFINITY-MD",
   "version": "4.5.0",
   "description": "A WhatsApp Bot Created By Sirius",
-  "main": "sirius.js",
+  "main": "index.js",
   "scripts": {
-    "start": "pm2 start sirius.js --deep-monitoring --attach --name INFINITY2.0-MD",
+    "start": "pm2 start index.js --deep-monitoring --attach --name INFINITY2.0-MD",
     "stop": "pm2 stop INFINITY-MD",
     "restart": "pm2 restart INFINITY-MD"
   },
