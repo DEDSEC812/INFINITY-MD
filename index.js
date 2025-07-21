@@ -131,9 +131,9 @@ async function loadSession() {
       
         console.log('Downloading session data...');
 
-        if (config.SESSION_ID.startsWith('INFINITY-MD**')) {
+        if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
             console.log('Downloading INFINITY session...');
-            const sessdata = config.SESSION_ID.replace("INFINITY-MD**", '');
+            const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", '');
             const response = await axios.get(`https://charle-ke.onrender.com/files/${sessdata}.json`,
             );
 
@@ -149,8 +149,8 @@ async function loadSession() {
         else {
             console.log('Downloading INFINITY session...');
             
-const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD;;;=>') 
-    ? config.SESSION_ID.replace("INFINITY-MD;;;=>", "") 
+const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD**') 
+    ? config.SESSION_ID.replace("INFINITY-MD**", "") 
     : config.SESSION_ID;
 
 const filer = File.fromURL(`https://charle-ke.onrender.com/${sessdata}.json`);
@@ -187,9 +187,9 @@ async function connectToWA() {
     const { version } = await fetchLatestBaileysVersion();
     
     const conn = makeWASocket({
-        logger: P({ level: 'silent' }),
-        printQRInTerminal: !creds, // Only show QR if no session loaded
-        browser: Browsers.macOS("Infinity-Md", "safari", "1.0.0"),
+        logger: Pino({ level: 'silent' }),
+        printQRInTerminal:!creds, // Only show QR if no session loaded
+        browser: Browsers.macOS("Zokou-Md", "safari", "1.0.0","Firefox"),
         syncFullHistory: true,
         auth: state,
         version,
