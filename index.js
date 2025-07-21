@@ -187,7 +187,7 @@ async function connectToWA() {
     const { version } = await fetchLatestBaileysVersion();
     
     const conn = makeWASocket({
-        logger: p({ level: 'silent' }),
+        logger: P({ level: 'silent' }),
         printQRInTerminal:!creds, // Only show QR if no session loaded
         browser: Browsers.macOS("Zokou-Md", "safari", "1.0.0","Firefox"),
         syncFullHistory: true,
