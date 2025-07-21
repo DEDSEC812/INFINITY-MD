@@ -116,7 +116,6 @@ const port = process.env.PORT || 7860;
 const sessionDir = path.join(__dirname, 'sessions');
 const credsPath = path.join(sessionDir, 'creds.json');
 
-// Create session directory if it doesn't exist
 if (!fs.existsSync(sessionDir)) {
     fs.mkdirSync(sessionDir, { recursive: true });
 }
@@ -128,14 +127,12 @@ async function loadSession() {
             return null;
         }
 
-      
         console.log('Downloading session data...');
 
         if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
             console.log('Downloading INFINITY session...');
             const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", '');
-            const response = await axios.get(`https://charle-ke.onrender.com/files/${sessdata}.json`,
-            );
+            const response = await axios.get(`https://charle-ke.onrender.com/files/${sessdata}.json`);
 
             if (!response.data) {
                 throw new Error('No credential data received from INFINITY database');
@@ -144,27 +141,9 @@ async function loadSession() {
             fs.writeFileSync(credsPath, JSON.stringify(response.data), 'utf8');
             console.log('INFINITY session downloaded successfully');
             return response.data;
-        } 
-        // Otherwise try MEGA.nz download
-        else {
-            console.log('Downloading INFINITY session...');
-            
-const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD**') 
-    ? config.SESSION_ID.replace("INFINITY-MD**", "") 
-    : config.SESSION_ID;
-
-const filer = File.fromURL(`https://charle-ke.onrender.com/${sessdata}.json`);
-            
-            const data = await new Promise((resolve, reject) => {
-                filer.download((err, data) => {
-                    if (err) reject(err);
-                    else resolve(data);
-                });
-            });
-            
-            fs.writeFileSync(credsPath, data);
-            console.log('INFINITY session downloaded successfully');
-            return JSON.parse(data.toString());
+        } else {
+            console.log('Invalid SESSION_ID format.');
+            return null;
         }
     } catch (error) {
         console.error('❌ Error loading session:', error.message);
