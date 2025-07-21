@@ -156,44 +156,42 @@ async function loadSession() {
 
 async function connectToWA() {
     console.log("Connecting to WhatsApp ⏳️...");
-    
-    const creds = await loadSession();
-    
-    const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, 'sessions'), {
-        creds: creds || undefined // Pass loaded creds if available
-    });
-    
+
+    const { state, saveCreds } = await useMultiFileAuthState(path.join(__dirname, 'sessions'));
+
     const { version } = await fetchLatestBaileysVersion();
-    
+
     const conn = makeWASocket({
         logger: P({ level: 'silent' }),
-        printQRInTerminal:!creds, // Only show QR if no session loaded
-        browser: Browsers.macOS("Zokou-Md", "safari", "1.0.0","Firefox"),
-        syncFullHistory: true,
+        printQRInTerminal: !state.creds,
+        browser: Browsers.macOS("INFINITY-MD", "Safari", "1.0.0", "Firefox"),
+        syncFullHistory: false,
         auth: state,
         version,
         getMessage: async () => ({})
     });
-    
-    // ... rest of your existing connectToWA code ...
 
-	
     let startupSent = false;
 
-conn.ev.on('connection.update', async (update) => {
-  const { connection, lastDisconnect, qr } = update;
+    conn.ev.on('connection.update', async (update) => {
+        const { connection, lastDisconnect } = update;
 
-  if (connection === 'close') {
-    if (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut) {
-      console.log('Connection lost, reconnecting...');
-      setTimeout(connectToWA, 5000);
-    } else {
-      console.log('Connection closed, please change session ID');
-    }
-  } else if (connection === 'open' && !startupSent) {
-    startupSent = true;
-    console.log('✅ INFINITY-MD Connected Successfully');
+        if (connection === 'close') {
+            const reason = lastDisconnect?.error?.output?.statusCode;
+            if (reason !== DisconnectReason.loggedOut) {
+                console.log('⚠️ Connection lost, reconnecting...');
+                setTimeout(connectToWA, 5000);
+            } else {
+                console.log('❌ Session terminée. Veuillez scanner à nouveau le QR.');
+            }
+        } else if (connection === 'open' && !startupSent) {
+            startupSent = true;
+            console.log('✅ INFINITY-MD Connected Successfully');
+        }
+    });
 
+    conn.ev.on('creds.update', saveCreds);
+	}
 	              // Load plugins
             const pluginPath = path.join(__dirname, 'plugins');
             fs.readdirSync(pluginPath).forEach((plugin) => {
