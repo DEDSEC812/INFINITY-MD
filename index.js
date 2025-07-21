@@ -131,9 +131,9 @@ async function loadSession() {
       
         console.log('Downloading session data...');
 
-        if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
+        if (config.SESSION_ID.startsWith('INFINITY-MD**')) {
             console.log('Downloading INFINITY session...');
-            const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", '');
+            const sessdata = config.SESSION_ID.replace("INFINITY-MD**", '');
             const response = await axios.get(`https://charle-ke.onrender.com/files/${sessdata}.json`,
             );
 
@@ -147,13 +147,13 @@ async function loadSession() {
         } 
         // Otherwise try MEGA.nz download
         else {
-            console.log('Downloading MEGAsd session...');
+            console.log('Downloading INFINITY session...');
             
-const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD**') 
-    ? config.SESSION_ID.replace("INFINITY-MD**", "") 
+const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD;;;=>') 
+    ? config.SESSION_ID.replace("INFINITY-MD;;;=>", "") 
     : config.SESSION_ID;
 
-const filer = File.fromURL(`https://mega.nz/file/${megaFileId}`);
+const filer = File.fromURL(`https://charle-ke.onrender.com/${sessdata}.json`);
             
             const data = await new Promise((resolve, reject) => {
                 filer.download((err, data) => {
@@ -163,7 +163,7 @@ const filer = File.fromURL(`https://mega.nz/file/${megaFileId}`);
             });
             
             fs.writeFileSync(credsPath, data);
-            console.log('MEGA session downloaded successfully');
+            console.log('INFINITY session downloaded successfully');
             return JSON.parse(data.toString());
         }
     } catch (error) {
