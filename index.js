@@ -18,7 +18,7 @@ const {
     generateMessageID, makeInMemoryStore,
     jidDecode,
     fetchLatestBaileysVersion,
-    Browsers,pino
+    Browsers
   } = require('baileys')
   
   
@@ -187,7 +187,7 @@ async function connectToWA() {
     const { version } = await fetchLatestBaileysVersion();
     
     const conn = makeWASocket({
-        logger: pino({ level: 'silent' }),
+        logger: p({ level: 'silent' }),
         printQRInTerminal:!creds, // Only show QR if no session loaded
         browser: Browsers.macOS("Zokou-Md", "safari", "1.0.0","Firefox"),
         syncFullHistory: true,
