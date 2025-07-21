@@ -189,7 +189,7 @@ async function connectToWA() {
     const conn = makeWASocket({
         logger: P({ level: 'silent' }),
         printQRInTerminal: !creds, // Only show QR if no session loaded
-        browser: Browsers.macOS("Firefox"),
+        browser: Browsers.macOS("Infinity-Md", "safari", "1.0.0"),
         syncFullHistory: true,
         auth: state,
         version,
