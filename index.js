@@ -18,7 +18,7 @@ const {
     generateMessageID, makeInMemoryStore,
     jidDecode,
     fetchLatestBaileysVersion,
-    Browsers
+    Browsers,pino
   } = require('baileys')
   
   
