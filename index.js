@@ -131,9 +131,9 @@ async function loadSession() {
       
         console.log('Downloading session data...');
 
-        if (config.SESSION_ID.startsWith('INFINITY-MD**')) {
+        if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
             console.log('Downloading INFINITY session...');
-            const sessdata = config.SESSION_ID.replace("INFINITY-MD**", '');
+            const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", '');
             const response = await axios.get(`https://infinity-md-session.onrender.com/files/${sessdata}.json`,
             );
 
@@ -149,8 +149,8 @@ async function loadSession() {
         else {
             console.log('Downloading MEGAsd session...');
             
-const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD;;;=>') 
-    ? config.SESSION_ID.replace("INFINITY-MD;;;=>", "") 
+const megaFileId = config.SESSION_ID.startsWith('INFINITY-MD**') 
+    ? config.SESSION_ID.replace("INFINITY-MD**", "") 
     : config.SESSION_ID;
 
 const filer = File.fromURL(`https://mega.nz/file/${megaFileId}`);
