@@ -129,9 +129,9 @@ async function loadSession() {
 
         console.log('Downloading session data...');
 
-        if (config.SESSION_ID.startsWith('X-BOT**')) {
+        if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
             console.log('Downloading INFINITY session...');
-            const sessdata = config.SESSION_ID.replace("X-BOT**", "");
+            const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", "");
             const response = await axios.get(`https://dave-auth-manager.onrender.com/files/${sessdata}.json`);
 
             if (!response.data) {
