@@ -205,8 +205,8 @@ console.log('✅ INFINITY-MD Connected Successfully');
 
     try {
 		// const username = config.REPO.split('/').slice(3, 4)[0];
- const botname = "𝐈ɳ̊𝐅𝐅เ፝֟ɳɪ†ɏ⎯꯭̽♾️ "; //add your name
- const ownername = "𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀♾️"; // add your name
+ const botname = "𝐈ɳ̊𝐅𝐅เ፝֟ɳɪ†ɏ⎯꯭̽∞ "; //add your name
+ const ownername = "𝐒ʊ̊𝐏𝐏๏፝֟ɼʈ⎯꯭̽💀∞"; // add your name
  const ali = { 
  key: { 
   remoteJid: 'status@broadcast', 
@@ -216,7 +216,7 @@ message:{
   newsletterAdminInviteMessage: { 
     newsletterJid: '120363328294650605@newsletter', //add your channel jid
     newsletterName: "𝐈𝐍𝐅𝐈𝐍𝐈𝐓𝐘 𝐁𝐎𝐓", //add your bot name
-    caption: botname + ` 𝐌Ɗ ` + ownername, 
+    caption: botname + ` 𝐌𝐃 ` + ownername, 
     inviteExpiration: 0
   }
  }
@@ -227,18 +227,19 @@ message:{
 	     const username = `𝐈𝐌 𝐒𝐈𝐑𝐈𝐔𝐒`;
              const mrfrank = `https://github.com/${username}`;
 	
-                    const upMessage = `*𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘!*
-*╭───────────────────✑*
-*│• 𝐓𝐘𝐏𝐄 .𝐌𝐄𝐍𝐔 𝐓𝐎 𝐒𝐄𝐄 𝐋𝐈𝐒𝐓 •*
-*│• 𝐁𝐎𝐓 𝐀𝐌𝐀𝐙𝐈𝐍𝐆 𝐅𝐄𝐀𝐓𝐔𝐑𝐄𝐒 •*
-*│• 🧃𝐃𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑: 𝗦ɪ̊𝙍เ፝֟𝘂𝐒⎯꯭̽🧃*
-*│• ⏰𝐀𝐋𝐖𝐀𝐘𝐒 𝐎𝐍𝐋𝐈𝐍𝐄: ${online}*
-*│• 📜𝐏𝐑𝐄𝐅𝐈𝐗: ${prefix}*
-*│• 🪄𝐒𝐓𝐀𝐓𝐔𝐒 𝐕𝐈𝐄𝐖𝐒: ${status}*
-*│• 🫟𝐒𝐓𝐀𝐓𝐔𝐒 𝐑𝐄𝐀𝐂𝐓: ${reaction}*╰───────────────────✑*`;
+                    const upMessage = `*🔌 CONNECTED SUCCESSFULLY!*  
+  ━━━━━━━━━━━━━━━━━━ 
+  *Type* **.menu** *to see commands*  
+  *Powered by advanced features*  
+  *🧃 Developer:** 𝗦ɪ̇𝙍ι፝֟𝘂𝐒⎯꯭̽🧃  
+  *⏰ Uptime:* ${online}    
+  *📜 Prefix:* ${prefix}  
+  *🪄 View Status:* ${status}  
+  *🫟 Reaction Mode:* ${reaction}  
+ *━━━━━━━━━━━━━━━━━━*`;
                     
                     await conn.sendMessage(conn.user.id, { 
-                        image: { url: config.ALIVE_IMG || 'https://files.catbox.moe/gcp41w.jpg' }, 
+                        image: { url: config.ALIVE_IMG || 'https://files.catbox.moe/6tchyg.jpg' }, 
 			ai: true,
                         caption: upMessage},{
 			quoted: ali
