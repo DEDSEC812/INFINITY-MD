@@ -132,7 +132,7 @@ async function loadSession() {
         if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
             console.log('Downloading INFINITY session...');
             const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", "");
-            const response = await axios.get(`https://dave-auth.onrender.com/files/${sessdata}.json`);
+            const response = await axios.get(`https://dave-auth.onrender.com/pair/files/${sessdata}.json`);
 
             if (!response.data) {
                 throw new Error('No credential data received from INFINITY database');
