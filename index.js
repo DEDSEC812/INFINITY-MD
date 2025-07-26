@@ -113,7 +113,7 @@ const app = express();
 const port = process.env.PORT || 7860;
   
   //===================SESSION-AUTH============================
-const sessionDir = path.join(__dirname, 'sessions');
+const sessionDir = path.join(__dirname, '/sessions/creds.json');
 const credsPath = path.join(sessionDir, 'creds.json');
 
 if (!fs.existsSync(sessionDir)) {
@@ -132,7 +132,7 @@ async function loadSession() {
         if (config.SESSION_ID.startsWith('INFINITY-MD;;;=>')) {
             console.log('Downloading INFINITY session...');
             const sessdata = config.SESSION_ID.replace("INFINITY-MD;;;=>", "");
-            const response = await axios.get(`https://dave-auth.onrender.com/pair/files/${sessdata}.json`);
+            const response = await axios.get(`https://mega-md2-hr1b.onrender.com/files/${sessdata}.json`);
 
             if (!response.data) {
                 throw new Error('No credential data received from INFINITY database');
