@@ -8,7 +8,7 @@ function convertToBool(text, fault = 'true') {
     return text === fault ? true : false;
 }
 module.exports = {
-SESSION_ID: process.env.SESSION_ID || "MEGALODON~MD~xVQTSZAK#XCeEnGgSfG2ifoGvZVXBRnpVtPqWPLh56TpLV4BgqKI",  
+SESSION_ID: process.env.SESSION_ID || "INFINITY-MD>>xVQTSZAK#XCeEnGgSfG2ifoGvZVXBRnpVtPqWPLh56TpLV4BgqKI",  
 //chatbot integration 
 CHATBOT: getConfig("CHATBOT") || "on",
 // add your Session Id 
